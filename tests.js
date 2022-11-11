@@ -4,19 +4,21 @@ const expect = chai.expect;
 describe("Colecciones en JS: Array", () => {
     it("Pueden crearse usando [ ]", () => {
 
-        // crea un array "a" usando los corchetes []
+     const a = [];   // crea un array "a" usando los corchetes []
 
         expect(Array.isArray(a)).to.be.true;
     })
     it("Pueden crearse usando new Array", () => {
 
-        // crea un array "a" usando el constructor "new"
+       const a = new Array;
+     // crea un array "a" usando el constructor "new"
 
         expect(Array.isArray(a)).to.be.true;
     })
     it("Pueden estar vacíos o contener elementos", () => {
 
-        // crea un array que esté vacío y otro que no esté vacío
+        const emptyArray = [];
+        const nonEmptyArray = [ "a" , "b" , "c" ];
 
         expect(emptyArray).to.be.empty;
         expect(nonEmptyArray).not.to.be.empty;
@@ -27,21 +29,21 @@ describe("Colecciones en JS: Array", () => {
 
         // completa la definición que falta usando la propiedad length
 
-        expect("???").to.equal(4);
+        expect(list.length).to.equal(4);
     })
     it("Nos permiten acceder a cada elemento del array", () => {
 
         let fruits = ["Piña", "Manzana", "Fresa", "Melón"]
-
+         
         // sustituye "???" en cada caso para acceder al elemento correspondiente de la lista
 
-        expect("???").to.equal("Piña");
-        expect("???").to.equal("Melón");
+        expect(fruits[0]).to.equal("Piña");
+        expect(fruits[3]).to.equal("Melón");
     })
     it("Nos permiten modificar cada elemento", () => {
 
         let fruits = ["Piña", "Manzana", "Fresa", "Melón"]
-
+        fruits.splice(1, 1, "Pera");
         // Añade el código que permite modificar el elemento correspondiente
 
         expect(fruits).to.have.same.members(["Piña", "Pera", "Fresa", "Melón"])
@@ -49,8 +51,7 @@ describe("Colecciones en JS: Array", () => {
 
     it("Podemos añadir elementos", () => {
         let fruits = ["Piña", "Manzana", "Fresa", "Melón"]
-
-        // Añade el código que permite modificar la lista (incluyendo un elemento al final)
+        fruits.push("Pera");
 
         expect(fruits).to.have.same.members(["Piña", "Manzana", "Fresa", "Melón", "Pera"])
     })
@@ -147,9 +148,11 @@ describe("Operaciones iterables", () => {
 
         let list = [1,5,7,9,11,13];
 
+       function freddy(fabio) {
+        return fabio - 1
+       }
         // utiliza la función map para aplicar los números de la lista
-        list = "???";
-        
+        list = list.map(freddy);
 
         expect(list).to.have.same.members([0,4,6,8,10,12]);
     })
@@ -158,7 +161,7 @@ describe("Operaciones iterables", () => {
 
         let list = ["Pikachu", "Charmander", "Magikarp"];
 
-        // utiliza la función map para aplicar los números de la lista y guardar la nueva lista en result
+       let result = list.map( x => x + ", te elijo a ti!"); // utiliza la función map para aplicar los números de la lista y guardar la nueva lista en result
                 
         expect(result).to.have.same.members([
             "Pikachu, te elijo a ti!",
@@ -172,7 +175,7 @@ describe("Operaciones iterables", () => {
         let knownExoplanets = [ "TOI-1298 b","TOI-132 b","TOI-1333 b","TOI-1338 b","TOI-1431 b","TOI-1444 b","TOI-1478 b","TOI-150.01","TOI-157 b","TOI-1601 b","TOI-163 b","TOI-1634 b","TOI-1685 b","TOI-169 b","TOI-172 b","TOI-1728 b","TOI-1749 b","TOI-1749 c"];
 
         // utiliza la función includes para comprobar si la lista de planetas contiene el planeta TOI-1634 b
-        let result = "???";
+        let result = knownExoplanets.includes("TOI-1634 b");
         
         expect(result).to.equal(true);        
     })
@@ -184,7 +187,7 @@ describe("Operaciones iterables", () => {
         // utiliza la función filter para quedarnos con los planetas que terminan por la letra c
         // puedes utilizar la función .endsWith para comprobar si un string termina por una letra
         // p.ej. "Hola".endsWith('a') devuelve true
-        let result = "???";
+        let result = knownExoplanets.filter( planetC => planetC.endsWith("c"));
         
 
         // todos los planetas de result terminan con la letra c
@@ -195,3 +198,21 @@ describe("Operaciones iterables", () => {
     // una lista alguna de las funciones que hemos visto, como map o filter.
     
 })
+/*
+describe("Ejemplos resueltos: Operaciones iterables", () => {
+    it("map nos permite realizar operaciones elemento a elemento", () => {
+
+        let list = [1,5,7,9,11,13];
+
+        function multiplicarPor10(num) {
+            return num * 10;
+        }
+
+        // utiliza la función map para aplicar la función multiplicarPor2 a los números de la lista
+        // SOLUCIÓN: 
+        list = list.map(multiplicarPor10);
+        
+        expect(list).to.have.same.members([10,50,70,90,110,130]);
+    })
+
+    */
